@@ -29,7 +29,7 @@ export default function Login() {
       if (token) {
         localStorage.setItem("authToken", token);
         localStorage.setItem("userId", res.data.user_id);
-        navigate("/");
+        navigate("/login");
       } else {
         toast.error("Login failed: Token not found");
       }
@@ -85,10 +85,10 @@ export default function Login() {
                   {loading ? "Logging in..." : "Login"}
                 </button>
               </form>
-            </div>
-            <Link to="/Signup" className={styles.Signup}>
-              Don't have a Account? <span> Sign Up</span>
-            </Link>
+             </div>
+             <Link to="/Signup" className={styles.Signup}> 
+               Don't have a Account? <span> Sign Up</span> 
+            </Link> 
           </div>
         </div>
       </div>

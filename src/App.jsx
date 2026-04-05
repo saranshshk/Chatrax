@@ -6,7 +6,7 @@ function App(){
   return(
   <div>
     <Routes>
-      <Route path="/Login"element={<PublicRoute><Login/></PublicRoute>}/>
+      <Route path="/"element={<Login/>}/>
     </Routes>
   </div>
   )
