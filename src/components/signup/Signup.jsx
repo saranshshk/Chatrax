@@ -57,6 +57,7 @@ export default function Signup() {
         <div className={styles.right}>
           <h2>Chatrax</h2>
           <form onSubmit={handleSignup}>
+            <div className={styles.inputbox1}>
             <input
               name="email"
               type="email"
@@ -92,7 +93,7 @@ export default function Signup() {
               className={styles.inputbox}
               required
             />
-
+  </div>
             <button type="submit" className={styles.btn} disabled={loading}>
               {" "}
               {loading ? "Sending..." : "Send OTP"}
