@@ -371,7 +371,7 @@ body{
 
 }
 
-.inputbox {
+.inputbox1 {
   width: 100%;
   max-width: 420px;
   height: 55px;
@@ -457,8 +457,11 @@ body{
 @media (min-height:1250px) and (min-width:1200px){
   .container{
     padding-top:50px ;
+
   }
 }
+
+
 @media (max-width: 1024px) {
   .right{
     width: 45%;
