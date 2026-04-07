@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import styles from "./Signup.module.css";
 import { signup } from "../api/Api";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+
 
 import { useEffect, useState } from "react";
 export default function Signup() {
@@ -20,10 +22,10 @@ export default function Signup() {
     e.preventDefault();
 
     if (!form.email || !form.username || !form.password) {
-      return alert("Please fill all fields");
+      return toast.error("Please fill all fields",{toastId: "one-toast-only"});
     }
     if (form.password !== confirmPassword) {
-      alert("Password Not match");
+      toast.error("Password Not match",{toastId: "one-toast-only"});
       return;
     }
     console.log(form);
@@ -33,15 +35,26 @@ export default function Signup() {
 
       // STEP 1 → Send details to backend (email OTP)
       const res = await signup(form);
+
       navigate("/Verify", { state: { email: form.email } });
+      
     } catch (err) {
-      alert(err.response.data);
+      if (!err.response) {
+        toast.error("Internal Error",{toastId: "one-toast-only"});
+      }
+      else{
+      toast.error(err.response.data,{toastId: "one-toast-only"});
+      }
     } finally {
       setloading(false);
+
     }
   };
 
+
   return (
+    <>
+    <ToastContainer autoClose={1500} />
     <div className={styles.body}>
       <div className={styles.container}>
         <div className={styles.left}>
@@ -106,5 +119,6 @@ export default function Signup() {
         </div>
       </div>
     </div>
+    </>
   );
 }
