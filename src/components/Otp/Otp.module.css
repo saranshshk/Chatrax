@@ -1,0 +1,135 @@
+    .body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      /* background: linear-gradient(145deg, #0d0d12, #1b1b2f); */
+      background: radial-gradient(circle at top left, #0f0f1a, #000);
+
+      color: #fff;
+    }
+
+    .otpcard {
+      /* background: #14141f; */
+      background: linear-gradient(135deg, #1a1a1a, #20182b);
+       
+
+      padding: 40px 45px;
+      width: 100%;
+      max-width: 420px;
+      border-radius: 18px;
+      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.4);
+      text-align: center;
+    }
+    .otpcard h2 {
+      font-size: 1.9rem;
+      margin-bottom: 10px;
+      color: #fff;
+      letter-spacing: 0.5px;
+    }
+
+    .otpcard p {
+      color: #b9b9c5;
+      font-size: 0.95rem;
+      margin-bottom: 30px;
+      line-height: 1.5;
+    }
+
+    .otpbox {
+      margin-bottom: 35px;
+    }
+
+    .otpbox span {
+      display: block;
+      color: #aaa;
+      font-size: 0.9rem;
+      margin-bottom: 10px;
+    }
+
+    .otpinputs {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+
+
+    .otpinputs input {
+      width: 52px;
+      height: 52px;
+      border-radius: 10px;
+      border: 1px solid #2e2e3e;
+      background: rgba(255, 255, 255, 0.05);
+    text-align: center;
+      font-size: 1.3rem;
+      color: #fff;
+      transition: 0.3s;
+      outline: none;
+      /* background: rgba(255, 255, 255, 0.08); */
+      backdrop-filter: blur(50px);
+      -webkit-backdrop-filter: blur(90px);
+    
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      /* color: white; */
+    
+      transition: all 0.2s ease;
+    }
+
+    .otpinputs input:focus {
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      background: rgba(255, 255, 255, 0.08);
+      transform: scale(1.05);
+    }
+
+    .btn {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 25px;
+      background: linear-gradient(90deg, #691b29, #26023d);
+
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      opacity: 0.95;
+      transform: scale(1.02);
+    }
+
+    .divider {
+      height: 1px;
+      background: #2e2e3e;
+      margin: 35px 0;
+    }
+
+    .backlink {
+      margin-top: 20px;
+      color: #aaa;
+      font-size: 15px;
+    }
+
+    .backlink a {
+      color: red;
+      text-decoration: none;
+      margin-left: 2px;
+      transition: 0.2s;
+    }
+
+    .backlink a:hover {
+      color: rgb(238, 71, 71);
+    }
+
+    @media (max-width: 480px) {
+      .otpcard {
+        padding: 30px 25px;
+      }
+      .otpinputs input {
+        width: 45px;
+        height: 45px;
+      }
+    }
