@@ -29,7 +29,7 @@ export default function Login() {
       if (token) {
         localStorage.setItem("authToken", token);
         localStorage.setItem("userId", res.data.user_id);
-        navigate("/login");
+        navigate("/");
       } else {
         toast.error("Login failed: Token not found");
       }
