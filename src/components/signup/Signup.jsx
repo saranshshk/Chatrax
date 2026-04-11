@@ -8,7 +8,6 @@ import { ToastContainer, toast } from "react-toastify";
 import { useEffect, useState } from "react";
 export default function Signup() {
   const navigate = useNavigate();
-  const [email, setEmail] = useState("");
   const [form, setform] = useState({
     password: "",
     email: "",
@@ -28,7 +27,7 @@ export default function Signup() {
       toast.error("Password Not match",{toastId: "one-toast-only"});
       return;
     }
-    console.log(form);
+    
 
     try {
       setloading(true);
@@ -36,14 +35,19 @@ export default function Signup() {
       // STEP 1 → Send details to backend (email OTP)
       const res = await signup(form);
 
-      navigate("/Verify", { state: { email: form.email } });
+      navigate("/VerifyOtp", { state: { email: form.email } });
       
     } catch (err) {
+      const backenderr = err.response?.data?.Error;
+      const backendMsg= err.response?.data?.message;
       if (!err.response) {
         toast.error("Internal Error",{toastId: "one-toast-only"});
       }
+      else if (!backenderr){
+        toast.error(backendMsg,{toastId: "one-toast-only"});
+      }
       else{
-      toast.error(err.response.data,{toastId: "one-toast-only"});
+        toast.error(backenderr,{toastId: "one-toast-only"});
       }
     } finally {
       setloading(false);
