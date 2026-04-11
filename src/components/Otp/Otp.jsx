@@ -4,14 +4,21 @@ import { Link,  useLocation } from "react-router-dom";
 import { verifyOtp } from "../api/Api";
 import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
+import { useEffect } from "react";
 
 export default function VerifyOtp() {
   const location = useLocation();
   const email = location.state?.email;
   const navigate=useNavigate()
   const [otp, setOtp] = useState(["", "", "", "", "", ""]);
+  const[loading,setloading]=useState(false)
   const inputsRef = useRef([]);
- 
+  useEffect(() => {
+    if (!email) {
+      navigate("/Signup");
+    }
+  }, [email, navigate]);
+
   const handleOtpChange = (e, index) => {
     const value = e.target.value;
     if (/^[0-9]?$/.test(value)) {
@@ -41,13 +48,19 @@ export default function VerifyOtp() {
     }
 
     try {
+      setloading(true)
       const res = await verifyOtp( finalOtp);
-      toast.success (res.message || "OTP Verified Successfully!");
+      toast.success ( "OTP Verified Successfully!");
+      setTimeout(() => {
+        navigate("/Login");
+      }, 1500);
 
-      navigate("/Login")
     } catch (err) {
       console.log(err);
       toast.error("Invalid OTP or verification failed",{toastId: "one-toast-only"});
+    }
+    finally{
+      setloading(false)
     }
   };
 
@@ -75,8 +88,8 @@ export default function VerifyOtp() {
             ))}
           </div>
 
-          <button className={styles.btn} onClick={handleVerify}>
-            Verify Email
+          <button className={styles.btn} disabled={loading} type="submit" onClick={handleVerify}>
+            {loading? "Verifying...":"Verify"}
           </button>
         </div>
 
