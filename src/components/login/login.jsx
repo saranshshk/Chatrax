@@ -35,9 +35,7 @@ export default function Login() {
       }
     } catch (err) {
       console.error(err);
-      toast.error("Invalid username or password", {
-        toastId: "one-toast-only",
-      });
+      toast.error("Invalid username or password");
     } finally {
       setloading(false);
     }
